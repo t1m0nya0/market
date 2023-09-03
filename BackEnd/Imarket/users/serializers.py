@@ -12,7 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
             'password': {'write_only': True}  # for hiding password
         }
 
-    def create(self, validated_data):  # кэширование
+    def create(self, validated_data):
         password = validated_data.pop('password', None)
         instance = self.Meta.model(**validated_data)
 
@@ -29,10 +29,3 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['user_type'] = user.user_type
 
         return token
-
-    # def validate(self, attrs):
-    #     data = super().validate(attrs)
-    #     refresh = self.get_token(self.user)
-    #     data['access'] = str(refresh.access_token)
-    #     data['user_type'] = self.user.user_type  # Add user_type to payload data
-    #     return data

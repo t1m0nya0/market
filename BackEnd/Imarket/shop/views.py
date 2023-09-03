@@ -3,7 +3,7 @@ from rest_framework.response import Response
 
 from orders.models import Order, OrderItem, WarehouseItem
 from orders.serializers import OrderSerializer, OrderItemSerializer
-from products.models import Product
+from products.models import Product, SubCategory
 from users.permissions import IsOwnerOfShop, IsOwnerOfWarehouseItem, IsAdminOrReadOnly
 from .models import Shop, WarehouseItem
 from .serializers import ShopSerializer, WarehouseItemSerializer
